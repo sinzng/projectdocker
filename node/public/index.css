@@ -1,0 +1,208 @@
+@font-face {
+  font-family: 'Freesentation-9Black';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'EF_jejudoldam';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.page-container {
+  display: flex;
+  width: 100vw; /* 화면 전체 너비를 차지 */
+  height: 100vh; /* 화면 전체 높이를 차지 */
+}
+
+.left-container{
+  width: 30%; /* 가로 절반씩 차지하도록 설정 */
+  height: 100%; /* 전체 높이를 사용 */
+  display:flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column; /* 세로로 아이템 배치 */
+  background-color: #f0f0f0;
+}
+
+.left-container button {
+  margin-top: 10px; /* 이미지 아래에 여백을 추가합니다. */
+  padding: 10px 20px; /* 버튼의 패딩을 설정합니다. */
+  font-size: 16px; /* 버튼의 글꼴 크기를 설정합니다. */
+  background-color: #aeaeae; /* 버튼의 배경색을 설정합니다. */
+  color: white; /* 버튼의 글꼴 색상을 설정합니다. */
+  border: none; /* 버튼의 테두리를 없앱니다. */
+  border-radius: 5px; /* 버튼의 모서리를 둥글게 만듭니다. */
+  cursor: pointer ; /* 마우스를 올렸을 때 포인터 커서로 변경합니다. */
+  margin-bottom: 100px;
+  
+}
+.left-container button:hover {
+  background: #606060;
+}
+
+
+
+.right-container {
+  width: 70%; /* 가로 절반씩 차지하도록 설정 */
+  height: 100%; /* 전체 높이를 사용 */
+  
+}
+
+.message {
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  max-width: 60%;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+.message.user {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  border-radius: 10px 10px 0 10px;
+}
+.message.bot {
+  background-color: #e6e6e6;
+  align-self: flex-start;
+  border-radius: 10px 10px 10px 0;
+}
+.message.user::before,
+.message.bot::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+}
+.message.user::before {
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #d1e7dd;
+}
+.message.bot::before {
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #e6e6e6 transparent transparent;
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+#chat-container {
+  visibility: hidden;
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#user-input {
+  display: flex;
+  padding: 20px;
+  height: 90px;
+}
+
+.input-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  align-items: center;
+}
+
+#user-input input {
+  flex: 1;
+  padding: 10px 90px 10px 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+#interim_span {
+  position: absolute;
+  flex: 1;
+  padding: 10px 90px 10px 10px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  right: 5px;
+}
+
+.buttons-container .send-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #000000;
+  font-size: 24px;
+}
+
+.mic {
+  border: none;
+  background-color: transparent;
+  color: #ccc;
+}
+
+#recording-state {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 24px;
+}
+
+#recording-state.on {
+  color: rgb(255, 79, 79) !important;
+}
+
+.profile-picture {
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

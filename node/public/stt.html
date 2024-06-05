@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음성 녹음 업로드</title>
+</head>
+<body>
+    <h1>음성 녹음 업로드</h1>
+    <div>
+        <button id="startRecording">녹음 시작</button>
+        <button id="stopRecording" disabled>녹음 중지</button>
+        <button id="soundtest">sound test</button>
+    </div>
+    <div>
+        <audio id="audioPlayer" controls></audio>
+    </div>
+    <div id="transcriptionResult"></div> <!-- transcription을 표시할 div -->
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        const startRecording = async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.addEventListener('dataavailable', (event) => {
+                recordedChunks.push(event.data);
+            });
+
+            mediaRecorder.addEventListener('stop', async () => {
+                const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
+                const formData = new FormData();
+                formData.append('file', audioBlob, 'recorded_audio.wav');
+
+                try {
+                    const response = await fetch('http://3.36.52.133:3000/upload', {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    if (!response.ok) {
+                        throw new Error('Error uploading audio: ' + response.statusText);
+                    }
+                    console.log('Audio uploaded successfully!');
+
+                    const responseData = await response.json(); // API 응답 JSON 파싱
+                    document.getElementById('transcriptionResult').innerText = responseData.transcription; // transcription을 div에 표시
+
+                    // 녹음된 음성 파일 재생
+                    const audioPlayer = document.getElementById('audioPlayer');
+                    audioPlayer.src = URL.createObjectURL(audioBlob);
+                    audioPlayer.load(); // 오디오 재생 준비
+                } catch (error) {
+                    console.error('Error uploading audio:', error.message);
+                }
+
+                recordedChunks = [];
+            });
+
+            mediaRecorder.start();
+            document.getElementById('startRecording').disabled = true;
+            document.getElementById('stopRecording').disabled = false;
+        };
+
+        const stopRecording = () => {
+            mediaRecorder.stop();
+            document.getElementById('startRecording').disabled = false;
+            document.getElementById('stopRecording').disabled = true;
+        };
+
+        document.getElementById('startRecording').addEventListener('click', startRecording);
+        document.getElementById('stopRecording').addEventListener('click', stopRecording);
+    </script>
+</body>
+</html>

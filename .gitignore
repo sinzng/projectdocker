@@ -1,0 +1,52 @@
+## .env
+.env
+
+.vscode
+
+## c
+c/*
+c/*.o
+c/**/*
+!c/**/
+!c/**/*.c
+!c/**/lib/
+!c/**/lib/*.h
+!c/**/Makefile
+!c/**/Makefile.*
+
+## java
+**/*.class
+
+##scala
+scala/**/project
+scala/**/target
+
+## maven
+maven/**/target
+
+## nodejs
+node/**/node_modules
+node/**/package-lock.json
+node/conf/*
+
+## python venv 
+fastapi/**/.venv
+fastapi/**/__pycache__/
+fastapi/**/imsi*
+fastapi/**/somefolder*
+fastapi/**/json*
+fastapi/**/project01*
+
+## .c9
+.c9/
+
+## oracle
+oracle/node/dbConfig.js
+oracle/node/node_modules
+oracle/node/package-lock.json
+oracle/**/myterror.csv
+
+## secret file
+
+mydata.jsonl
+secret.json

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Dialog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="check.css" />
+    <link rel="icon" href="data:," />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      @font-face {
+        font-family: "Freesentation-9Black";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+          format("woff2");
+        font-weight: 900;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="top-container">
+      <p style="font-family: EF_jejudoldam">FriendGenie</p>
+    </div>
+    <div id="calendar-container">
+      <div id="calendar"></div>
+    </div>
+    <div class="chat-container">
+      <header id="selected-date"></header>
+      <!-- 선택된 날짜를 표시할 컨테이너 -->
+      <div id="summary-container">
+        <div id="summary-title">
+          요약
+          </p>
+          <audio id="audio">
+            <source id="audioSource" type="audio/mpeg" />
+          </audio>
+          <div class="checkbox">
+            <input type="checkbox" id="playPauseCheckbox" />
+            <label for="playPauseCheckbox"></label>
+          </div>
+        </div>
+        <div id="summary-content"></div>
+        <!-- 대화 요약본을 표시할 컨테이너 -->
+        <img id="no-summary-image" src="image/nosummary.png" alt="No summary available" style="display: none;">
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="check.js"></script>
+  </body>
+</html>

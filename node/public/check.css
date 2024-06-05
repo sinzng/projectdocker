@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "Ownglyph_ryuttung-Rg";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-2@1.0/Ownglyph_ryuttung-Rg.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "EF_jejudoldam";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+  * {
+    font-family: Arial, sans-serif;
+  }
+  
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  #top-container {
+    width: 100%;
+    height: 20vh; /* 상단 컨테이너 높이 설정 */
+    background-color: #f0f0f0; /* 배경색 추가 */
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
+    position: fixed; /* 상단에 고정 */
+    top: 0;
+    left: 0;
+  }
+  #top-container p {
+    font-family: Freesentation-9Black;
+    font-size: 48px;
+    text-align: left;
+    margin-left: 60px;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  #calendar-container {
+    position: relative;
+    width: 33.33vh;
+    /* 화면 높이의 1/3에 해당하는 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+  
+  .chat-container {
+    position: relative;
+    width: calc(100% - 70vh); /* 가로 길이를 줄이기 위해 수정 */
+    top: 25vh;
+    height: 60vh;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 50px;
+    box-sizing: border-box;
+    margin: 20px;
+    margin-top: 40px;
+    margin-right: 100px;
+  }
+  #summary-container {
+    width: 100%;
+    height: 95%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+    border-left: 1px solid #ccc;
+  }
+  #summary-title {
+    width: 20%;
+    height: 10%;
+    font-weight: bold;
+    text-align: center; /* 중앙 정렬을 위해 추가 */
+    position: absolute; /* chat-container를 기준으로 고정하기 위해 */
+    left: 8%;
+    top: 25%;
+    transform: translateX(-45%); /* 가운데 정렬을 위해 50%만큼 이동 */
+  }
+  #summary-content {
+    padding: 0px 70px;
+    width: 80%;
+    height: 75%;
+    flex-grow: 1;
+  }
+  #calendar {
+    width: 100%;
+    height: 30%;
+    border: none;
+  }
+  
+  #selected-date {
+    font-size: 1.2em;
+    text-align: center;
+    width: 15%;
+    margin-top: 20px;
+    margin-right: 35px;
+  }
+  
+  .checkbox {
+    position: relative;
+    display: inline-block;
+    margin-right:15px;
+  }
+  
+  .checkbox:after,
+  .checkbox:before {
+    font-family: FontAwesome;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    text-rendering: auto;
+  }
+  
+  .checkbox label {
+    width: 45px;
+    height: 25px;
+    background: #ccc;
+    position: relative;
+    display: inline-block;
+    border-radius: 23px;
+    transition: 0.4s;
+  }
+  
+  .checkbox label:after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    left: 0;
+    top: -2.5px;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+  }
+  
+  #playPauseCheckbox {
+    position: relative; /* 요약 버튼의 위치를 절대 위치로 설정합니다. */
+    bottom: 0; /* 요약 제목 아래에 위치하도록 설정합니다. */
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  #playPauseCheckbox:hover + label:after {
+    box-shadow: 0 1px 7.5px 0 rgba(0, 0, 0, 0.2),
+      0 1.5px 4px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  #playPauseCheckbox:checked + label:after {
+    left: 40px;
+  }
+  
+  .checkbox label {
+    background: none;
+    border: 3px solid #555;
+    height: 25px;
+  }
+  
+  .checkbox label:after {
+    background: #555;
+    box-shadow: none;
+    top: 2px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+  }
+  
+  #playPauseCheckbox:checked + label {
+    border-color: #569ff7;
+  }
+  
+  #playPauseCheckbox:checked + label:after {
+    background: #569ff7;
+    left: 23px;
+  }
+  
