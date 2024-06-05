@@ -129,7 +129,7 @@ chatMessages.prepend(messageElement);
 }
 
 async function fetchAIResponse(prompt) {
-const response = await fetch("http://3.36.52.133:3000/chat", {
+const response = await fetch("http://localhost:3000/chat", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

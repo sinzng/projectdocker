@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 // get summary
 app.get('/getsummaryfroms3', (req, res) => {
     // Axios를 사용하여 외부 API에 GET 요청 보내기
-    axios.get('http://3.36.52.133:3000/getsummaryfroms3')
+    axios.get('http://localhost:3000/getsummaryfroms3')
       .then(response => {
         console.log(response.data); // 서버에서 받은 데이터 출력
         res.send(response.data); // 클라이언트에게 응답 전송
@@ -31,7 +31,7 @@ app.post('/texttospeech', (req, res) => {
   
 
     // 외부 API에 요청을 보내기 위해 요약 데이터를 전송
-    axios.post('http://43.203.206.180:3500/texttospeech/', { summary, date })
+    axios.post('http://localhost:3500/texttospeech/', { summary, date })
         .then((response) => {
             console.log(response.data); // 서버에서 받은 데이터 출력
             res.send(response.data)

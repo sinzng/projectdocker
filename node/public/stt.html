@@ -34,7 +34,7 @@
                 formData.append('file', audioBlob, 'recorded_audio.wav');
 
                 try {
-                    const response = await fetch('http://3.36.52.133:3000/upload', {
+                    const response = await fetch('http://localhost:3000/upload', {
                         method: 'POST',
                         body: formData,
                     });
@@ -49,7 +49,7 @@
                     // 녹음된 음성 파일 재생
                     const audioPlayer = document.getElementById('audioPlayer');
                     audioPlayer.src = URL.createObjectURL(audioBlob);
-                    audioPlayer.load(); // 오디오 재생 준비
+                    audioPlayer.load(); // 오디오 재생 로드
                 } catch (error) {
                     console.error('Error uploading audio:', error.message);
                 }
